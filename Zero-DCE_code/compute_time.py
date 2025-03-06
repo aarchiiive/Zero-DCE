@@ -1,12 +1,15 @@
 import torch
-from torchprofile import profile_macs  # MACs 계산 라이브러리
+# from torchprofile import profile_macs  # MACs 계산 라이브러리
 import model
 
 # 모델 로드
 DCE_net = model.enhance_net_nopool().cuda()
 
 # 입력 크기 정의 (예: 256x256 이미지)
-input_size = (720, 1080)  # (높이, 너비)
+# input_size = (720, 1080)  # (높이, 너비)
+# input_size = (832, 658) # Exdark
+input_size = (900, 1600) # nuImages
+
 dummy_input = torch.randn(1, 3, *input_size).cuda()  # 배치 크기 1, 채널 3
 
 # (옵션) warm-up: GPU 초기화를 위해 몇 번 미리 실행
